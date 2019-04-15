@@ -1,5 +1,6 @@
 ---
 - name: Deploy spring-boot-hello-world
+  hosts: all
   roles:
     - { role: spring-boot-hello-world }
 
