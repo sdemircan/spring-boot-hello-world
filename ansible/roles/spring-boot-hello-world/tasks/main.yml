@@ -3,7 +3,7 @@
   become: yes
   docker_container:
     name: "spring-boot-hello-world"
-    image: "srdemircan/spring-boot-hello-world:latest"
+    image: "sdemircan/spring-boot-hello-world:latest"
     state: started
     recreate: yes
     pull: yes
