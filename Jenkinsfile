@@ -19,7 +19,7 @@ pipeline {
                 }
             }
         }
-        stage('Push Image') {
+        stage('Deploy') {
             steps {
                 withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'remote-jenkins-user', \
                       keyFileVariable: 'SSH_KEY_FOR_USER', usernameVariable:'SSH_USER')]) {
