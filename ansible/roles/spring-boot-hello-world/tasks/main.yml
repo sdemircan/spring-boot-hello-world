@@ -1,12 +1,18 @@
 ---
-- name: Run spring-boot-hello-world container
-  become: yes
-  docker_container:
-    name: "spring-boot-hello-world"
-    image: "sdemircan/spring-boot-hello-world:latest"
-    state: started
-    recreate: yes
-    pull: yes
-    ports:
-      - "8080:8080"
+- name: Copy build context
+  copy:
+    src: "{{ role_path }}/files/"
+    dest: /tmp/docker-compose
 
+
+- name: Remove running containers
+  become: yes
+  command: 'docker-compose rm -f'
+  args:
+     chdir: /tmp/docker-compose
+
+- name: Deploy containers
+  become: yes
+  command: 'docker-compose up -d spring-boot-hello-world=3'
+  args:
+     chdir: /tmp/docker-compose
