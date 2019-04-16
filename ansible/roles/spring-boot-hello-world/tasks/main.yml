@@ -13,6 +13,6 @@
 
 - name: Deploy containers
   become: yes
-  command: 'docker-compose up -d spring-boot-hello-world=3'
+  command: 'docker-compose up -d --scale spring-boot-hello-world=3'
   args:
      chdir: /tmp/docker-compose
