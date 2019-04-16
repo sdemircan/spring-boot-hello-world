@@ -10,12 +10,14 @@ pipeline {
         stage('Build Image') {
             steps {
                 sh 'docker build -t sdemircan/spring-boot-hello-world .'
+                sh 'docker build -t sdemircan/nginx ./nginx'
             }
         }
         stage('Push Image') {
             steps {
                 withDockerRegistry([ credentialsId: "docker-hub", url: "" ]) {
                     sh 'docker push sdemircan/spring-boot-hello-world:latest'
+                    sh 'docker push sdemircan/nginx:latest'
                 }
             }
         }

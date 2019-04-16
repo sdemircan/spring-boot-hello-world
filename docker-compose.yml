@@ -1,0 +1,15 @@
+
+version: '3'
+
+services:
+
+    proxy:
+        container_name: nginx
+        image: nginx
+        ports:
+            - "80:80"
+ 
+    spring-boot-hello-world:
+        image: sdemircan/spring-boot-hello-world:latest
+        expose:
+            - 8080
